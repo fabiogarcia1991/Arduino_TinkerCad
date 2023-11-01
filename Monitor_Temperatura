@@ -1,0 +1,43 @@
+// C++ code
+//
+int sensorPin = A0;
+int alarmePin = 7;
+int ventiladorPin = 8;
+int ledPin = 13;
+
+void setup()
+{
+  pinMode(sensorPin, INPUT);
+  pinMode(alarmePin, OUTPUT);
+  pinMode(ventiladorPin,OUTPUT);
+  pinMode(ledPin, OUTPUT);
+  
+}
+
+void loop()
+{
+//Conversão do leitor analógico da temperatura em graus Celsius e leitura da temperatura
+  int temperatura = analogRead(sensorPin);
+  float temperaturaCelsius = (((temperatura * 5.0) / 1024) - 0.5);
+
+//Acionamento do ventilador caso a temperatura ultrapasse 30°C
+  
+  if (temperaturaCelsius >= 30){
+  	digitalWrite(ventiladorPin, HIGH);
+  } else {
+  	digitalWrite(ventiladorPin, LOW);
+  }
+
+//Acionamento de uma luz led e de uma buzina caso a temperatura atinja 50°C
+
+  if (temperaturaCelsius >= 50) {
+  	digitalWrite(ledPin, HIGH);
+  	digitalWrite(alarmePin, HIGH);
+  } else {
+  	digitalWrite(ledPin, LOW);
+  	digitalWrite(alarmePin, LOW);
+  }
+
+//Leitura da temperatura a cada 30 segundos
+  delay(30000);
+}

@@ -41,3 +41,7 @@ void loop()
 //Leitura da temperatura a cada 30 segundos
   delay(30000);
 }
+
+
+//Link do Tinkercad contendo o protótipo do hardware:
+https://www.tinkercad.com/things/keSGdIYCvg4-sensor-de-temperatura-com-alarme
